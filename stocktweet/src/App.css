@@ -1,0 +1,130 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+    background-color: #353535;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: calc(10px + 2vmin);
+    color: deepskyblue;
+}
+.displaycolumn {
+  margin: auto;
+  width: 50%;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.twitter-timeline {
+  max-width: 100%;
+  max-height: 1000px;
+}
+.fa {
+  font-size: 25px;
+  color: #FFFFFF;
+}
+.panel-title {
+ font-size: 20px; 
+ color: #FFFFFF;
+ font-family: 'Open Sans', sans-serif;
+}
+.panel-heading {
+ background-color: #1da1f2 !important;
+ color: #1da1f2 !important;
+}
+.panel {
+   margin-top: 25px;
+}
+
+div.wrapper {
+  margin-left: 50%;
+  padding: 20px;
+  transform: translate(-50%,0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+i {
+    width: 60px;
+    height: 60px;
+    font-style: normal;
+    font-family: fontAwesome;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(50, 50, 50);
+    color: #fff;
+    border-radius: 50%;
+    left: -59px;
+    transition-duration: .5s;
+    position: relative;
+}
+
+input {
+  padding: 20px;
+  border: none;
+  border-radius: 50px;
+  width: 15px;
+  transition-duration: .5s;
+  position: relative;
+}
+
+div.wrapper:hover input, div.wrapper input:focus {
+  width: 200px;
+  border-radius: 50px;
+}
+
+div.wrapper:hover input {
+  box-shadow: 0 0 5px 0 black;
+}
+
+div.wrapper input:focus {
+  box-shadow: 0 0 5px 0 black;
+}
+
+div.wrapper:hover i{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: dodgerblue;
+}
+
+div.wrapper i:hover {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+div.current-showing {
+  
+  vertical-align: middle;
+  width: 40%;
+  margin-left: 50%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.new-tag {
+  background-color: #e0edf5;
+  border-radius: 3px;
+  color: #2f5d92;
+  float: left;
+  font-weight: 500;
+  height: 28px;
+  line-height: 28px;
+  margin: 0 8px 6px 0;
+  padding: 0 1px 0 8px;
+  white-space: nowrap;
+}
