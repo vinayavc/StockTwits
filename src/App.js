@@ -56,14 +56,6 @@ export default class App extends React.Component{
 
 	componentDidMount() {
 
-		// axios.get('https://api.stocktwits.com/api/2/streams/symbol/MSFT.json')
-	    // .then(response => {
-	    //   this.setState({ tweetmsg: response.data.messages });
-		//   console.log(response);
-	    // })
-	    // .catch(error => {
-	    //   console.log(error);
-	    // });
 	}
 
 	/**
@@ -72,22 +64,10 @@ export default class App extends React.Component{
    */
 	updateSymbols = (symbol) => {
 		symbol=symbol.toUpperCase();
-		// let stockSymbolList = this.state.stockSymbols;
-		// let symbolCount = this.getTweetCount();
-		// console.log(symbolCount);
-		// stockSymbolList[symbol] = symbolCount;
 		this.state.stockSymbols.push(symbol);
-		console.log(this.state.stockSymbols);
 	};
 
-	// getTweetCount = (symbol) => {
-	// 	let symbolList = this.state.tweetmsg.symbols;
-	// 	count=0;
-	// 	if(symbolList.foreach(contains(symbol))){
-	// 		count+=1;
-	// 	}
-	// 	return count;
-	// };
+
 	/**
 	 * delete a symbol
 	 * @param {string} symbol
@@ -113,25 +93,25 @@ export default class App extends React.Component{
 		}
 
 		if (symbol === []) {
-			console.log(symbol);
 			this.setState({tweetmsg: []});
 		} else{
 			this.getTweetMessages(symbol);
 			let interval = setInterval(async() => { this.getTweetMessages(symbol); }, 30000);
-			console.log(interval);
 			this.setState({ timeInterval: interval });
 	}
 	};
 
+
+	/**
+	 * get latest tweets
+	 */
 	getTweetMessages = (symbol) => {
-		axios.get(`http://localhost:8080/${symbol}`)
+		axios.get(`https://stocktwits-orbis.herokuapp.com/${symbol}`)
 	    .then(response => {
-			console.log(response);
 	      	this.setState({ tweetmsg: response.data.messages });
 	    })
 	    .catch(error => {
 			this.setState({tweetmsg: []});
-	      	console.log(error);
 		});
 	};
 
