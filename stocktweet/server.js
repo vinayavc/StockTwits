@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const cors = require('cors');
+const port = process.env.PORT || 3000
 
 app.get('/hey', (req, res) => res.send('ho!'))
 app.use(cors())
@@ -22,7 +23,13 @@ app.get('/:key', async(req,res) => {
         console.log(error);
     });
         
-    });
+});
 
 
-app.listen(8080)
+
+
+
+
+app.listen(port,() => {
+  console.log(`Server running at port `+port);
+});

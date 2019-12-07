@@ -13,10 +13,7 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,5 +30,11 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:8080",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinayavc/StockTwits"
+  }
+  
 }

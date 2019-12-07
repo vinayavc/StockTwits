@@ -82,8 +82,9 @@ input {
 }
 
 div.wrapper:hover input, div.wrapper input:focus {
-  width: 200px;
+  width: 400px;
   border-radius: 50px;
+  outline: none;
 }
 
 div.wrapper:hover input {
@@ -109,7 +110,7 @@ div.current-showing {
   
   vertical-align: middle;
   width: 40%;
-  margin-left: 50%;
+  margin: auto;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -127,4 +128,69 @@ div.new-tag {
   margin: 0 8px 6px 0;
   padding: 0 1px 0 8px;
   white-space: nowrap;
+}
+
+/*tweet box*/
+.tweet {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+p,
+ul {
+  margin: 0;
+}
+.author-meta,
+p {
+  margin-bottom: 1em;
+}
+.name {
+  font-weight: 600;
+}
+.handle,
+.time {
+  color: #657786;
+}
+.handle::after {
+  content: " \00b7";
+}
+div.content {
+  flex: 1;
+}
+div.content p {
+  word-break: break-word;
+}
+.avatar {
+  margin-right: 10px;
+  width: 48px;
+  border-radius: 50%;
+}
+.actions {
+  display: flex;
+  padding: 0;
+}
+.actions li {
+  list-style: none;
+  margin-right: 30px;
+}
+.actions button {
+  border: none;
+  color: #657786;
+  font-size: 16px;
+  cursor: pointer;
+}
+.actions button:hover {
+  color: #1da1f2;
+}
+
+div.app-title p {
+  font-family: BioRhyme;
+  font-size: 30px;
+  padding: 10px;
+  color: dodgerblue;
 }

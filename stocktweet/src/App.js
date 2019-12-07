@@ -12,16 +12,24 @@ class Box extends React.Component {
                <div className="col-md-4" align="center"></div>
                <div className="container">
                   <div className="col-md-4 displaycolumn">
-                     <div className="panel panel-danger">
-                        <div className="panel-heading">
-                           <h4 className="panel-title">
-                              {this.props.data.user.name} : <span>{this.props.data.user.username}</span>
-                           </h4>
-                        </div>
-                        <div className="panel-body">
-                           <div className="twitter-timeline" data-width="100%" >{this.props.data.body}</div> 
-                        </div>
-                     </div>
+				  <article class="tweet">
+					<img
+						className="avatar"
+						src={this.props.data.user.avatar_url}
+						alt="Name"
+					/>
+					<div className="content">
+						<div className="author-meta">
+						<span className="name">{this.props.data.user.name} : </span>
+						<span className="handle">{this.props.data.user.username}</span>
+						<span className="time">{this.props.data.created_at}</span>
+						</div>
+						<p>
+						{this.props.data.body}
+						</p>
+						
+					</div>
+					</article>
                   </div>
                </div>
                <div className="col-md-4">
@@ -32,16 +40,6 @@ class Box extends React.Component {
 			)
 	}
 }
-
-// class TweetCountBox extends React.Component {
-// 	render() {
-// 		return (
-// 			<div className="row">
-// 				<div className="tweetcountDisplay" data-width="100%"> {this.props.data.tweetCount} </div>
-// 			</div>
-// 		)
-// 	}
-// }
 
 export default class App extends React.Component{
 	constructor(props) {
@@ -109,15 +107,23 @@ export default class App extends React.Component{
 	 * updates the search results with new symbol list
 	 * @param {string} symbol
 	 */
-	updatedSearch = (symbol) => {
+	updatedSearch = async(symbol) => {
 		if (this.timeInterval !== null) {
 			clearInterval(this.timeInterval);
 		}
+
 		if (symbol === []) {
 			console.log(symbol);
 			this.setState({tweetmsg: []});
-		}
-		else{
+		} else{
+			this.getTweetMessages(symbol);
+			let interval = setInterval(async() => { this.getTweetMessages(symbol); }, 30000);
+			console.log(interval);
+			this.setState({ timeInterval: interval });
+	}
+	};
+
+	getTweetMessages = (symbol) => {
 		axios.get(`http://localhost:8080/${symbol}`)
 	    .then(response => {
 			console.log(response);
@@ -127,7 +133,6 @@ export default class App extends React.Component{
 			this.setState({tweetmsg: []});
 	      	console.log(error);
 		});
-	}
 	};
 
 	onEnterPress = (e) =>{
@@ -162,11 +167,16 @@ export default class App extends React.Component{
 	    return (
 			<div>
 				<div>
+					<div className="app-title">
+						<p>Get latest tweets on your favourite stocks! 📈</p>
+					</div>
+				</div>
+				<div>
 					<form onSubmit={this.onEnterPress} >
 						<div className="wrapper">
 							<input className="input" 
 							type="text" 
-							placeholder="Enter Stock Symbol"
+							placeholder="Stock Symbol here.. hit Enter to Search"
 							value={this.state.stockName}
 							onChange={(e) => this.setState({stockName : e.target.value})}/>
 							<i className="fas fa-search"></i>
